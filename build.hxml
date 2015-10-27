@@ -1,0 +1,40 @@
+
+-cmd /usr/local/bin/protoc ./protocol/sample.proto --descriptor_set_out=sample.proto.bin
+
+--next
+
+--macro "com.dongxiguo.protobuf.commandLine.Importer.importDescroptorFileSet('sample.proto.bin')"
+--gen-hx-classes
+-lib protoc-gen-haxe
+
+--next
+
+-cp src
+-main WebSocketTest
+-dce full
+
+-js js/protobuff.dev.js
+-D source-map-content
+
+
+--next
+-cmd rm -rf ./output/
+
+
+--next
+-cmd mkdir -p ./output/js
+-cmd mkdir -p ./output/libs
+
+--next
+-cmd cp -R -f ./js/ ./output/js
+-cmd cp -R -f ./libs/ ./output/libs
+-cmd cp -f ./index.html ./output/index.html
+
+
+--next
+-cmd rm -rf /Library/WebServer/Documents/protobuff/
+
+
+--next
+-cmd cp -R -f ./output/ /Library/WebServer/Documents/protobuff/
+-cmd chmod -R 777 /Library/WebServer/Documents/protobuff/

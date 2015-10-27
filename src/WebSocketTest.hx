@@ -71,7 +71,7 @@ class WebSocketTest {
 		var builder = new samplePackage.Message_Builder();
 		builder.message = "Hello, World!";
 
-		
+
 
 //		var output = File.write("sample.save");
 //		builder.writeTo(output);
